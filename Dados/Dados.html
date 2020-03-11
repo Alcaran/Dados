@@ -12,33 +12,30 @@
 
         google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(drawChart);
+        
+        const f0 = 100 * 31;
+        var wo = 2 * 180 * f0;
+        var arrayxd = [['Seconds', 'Volt']];       
 
-        var t = 1;
-        const f = 100 * 31;
-        var wo = 2 * Math.PI * f;
+        for (var t = 0 ;t < 100;t++ ) {
+           
+            var func = 0;
+            var cont = 1;
+            for (var k = 1; k <= 1000; k++){
+                func += (Math.sin(cont*wo*t))/cont;   
+                cont += 2;         
+            }
 
-        var arrayxd;
-        arrayxd = [['test', 'test']];
-
-
-
-        for (var x = 1; x < 100; x++) {
-
-            var func = Math.sin(wo*t)
-            var funcComplete = 0.5 + (2 / Math.PI) * func;
-
-            const arrayd = [t, funcComplete];
+            var funcComplete = func * (2 / 180) + 0.5;
+            var arrayd = [t, funcComplete];
             arrayxd.push(arrayd);
-
-
-            t++;
         }
 
         function drawChart() {
             var data = google.visualization.arrayToDataTable(arrayxd);
 
             var options = {
-                title: 'Comunicação de Dados',
+                title: '',
                 curveType: 'function',
                 legend: { position: 'bottom' }
             };
@@ -51,7 +48,7 @@
 </head>
 
 <body>
-    <div id="curve_chart" style="width: 900px; height: 500px"></div>
+    <div id="curve_chart" style="width: 1400px; height: 650px"></div>
 </body>
 
 </html>
