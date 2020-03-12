@@ -17,17 +17,17 @@
         var wo = 2 * 180 * f0;
         var arrayxd = [['Seconds', 'Volt']];       
 
-        for (var t = 0 ;t < 100;t++ ) {
+        for (var t = 0 ;t < 1000;t++ ) {
            
             var func = 0;
             var cont = 1;
             for (var k = 1; k <= 1000; k++){
-                func += (Math.sin(cont*wo*t))/cont;   
+                func += (Math.sin(cont*wo*t / 10))/cont;   
                 cont += 2;         
             }
 
             var funcComplete = func * (2 / 180) + 0.5;
-            var arrayd = [t, funcComplete];
+            var arrayd = [t / 10, funcComplete];
             arrayxd.push(arrayd);
         }
 
